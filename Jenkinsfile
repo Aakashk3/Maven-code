@@ -49,6 +49,11 @@ spec:
         }
       }
     }
+    
+    environment {
+	    DOCKERHUB-CREDENTIALS = credentials('gayu-dockerhub-id')
+    }
+    
     stage('Docker build') {
       steps {
         container('docker') {
@@ -61,12 +66,8 @@ spec:
     stage('Docker image push') {
       steps {
         container('docker') {
-              withCredentials([usernamePassword(credentialsId: 'gayu-dockerhub-id', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-              sh """
-                docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}
-                docker push gayathirims/northstar-dev:$BUILD_NUMBER
-              """
-          }          
+                sh 'docker push gayathirims/northstar-dev:$BUILD_NUMBER'
+                   
         }
       }
     }    
