@@ -63,7 +63,7 @@ spec:
         container('docker') {
               withCredentials([usernamePassword(credentialsId: 'gayathiri-dockerhub-ids', passwordVariable: 'Gayathiri123', usernameVariable: 'Gayathiri_docker')]) {
               sh """
-                docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}
+                docker login -u ${env.Gayathiri_docker} -p ${env.Gayathiri123}
                 docker push gayathirims/northstar-dev:$BUILD_NUMBER
               """
           }          
