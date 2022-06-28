@@ -62,10 +62,8 @@ spec:
       steps {
         container('docker') {
               withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-              sh """
-                docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}
-                docker push gayathirims/northstar-dev:$BUILD_NUMBER
-              """
+                sh 'docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}'
+                sh 'docker push gayathirims/northstar-dev:$BUILD_NUMBER'
           }          
         }
       }
