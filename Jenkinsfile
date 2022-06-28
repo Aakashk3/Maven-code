@@ -61,9 +61,9 @@ spec:
     stage('Docker image push') {
       steps {
         container('docker') {
-              withCredentials([usernamePassword(credentialsId: 'gayathiri-dockerhub-ids', passwordVariable: 'Gayathiri123', usernameVariable: 'Gayathiri_docker')]) {
+              withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
               sh """
-                docker login -u ${env.Gayathiri_docker} -p ${env.Gayathiri123}
+                docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}
                 docker push gayathirims/northstar-dev:$BUILD_NUMBER
               """
           }          
