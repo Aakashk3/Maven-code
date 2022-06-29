@@ -54,7 +54,7 @@ spec:
       steps {
         container('docker') {
           sh """
-             docker build -t gayathirims/sample-app$BUILD_NUMBER .
+             docker build -t gayathirims/sample-app:$BUILD_NUMBER .
           """
         }
       }
