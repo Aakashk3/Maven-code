@@ -39,15 +39,12 @@ spec:
 """
 }
    }
-  stages {
-    stage('Maven build') {
-      steps {
-        container('maven') {
-          sh """
-                mvn clean install
-            """
+  stage('Build stage') {
+        steps {
+            container('maven') {
+                sh 'mvn -B clean verify'
+            }
         }
-      }
     }
     
     stage('Docker build') {
