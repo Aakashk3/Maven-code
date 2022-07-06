@@ -1,9 +1,9 @@
 pipeline {
   agent {
-   kubernetes {
-     label 'devops'
-     defaultContainer 'jnlp'
-     yaml """
+    kubernetes {
+      label 'devops'
+      defaultContainer 'jnlp'
+      yaml """
 apiVersion: v1
 kind: Pod
 metadata:
