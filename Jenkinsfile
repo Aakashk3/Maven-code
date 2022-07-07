@@ -25,9 +25,10 @@ pipeline {
               sh """
                 docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}
                 docker push aakashk33/mavenapp:$BUILD_NUMBER
-             """
-        }          
-      }
-    }
-  }    
+              """
+         }          
+       }
+     }
+   }    
+ }
 }
